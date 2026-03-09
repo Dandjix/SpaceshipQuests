@@ -25,9 +25,9 @@ private:
                 //{
                 //	continue;
                 //}
-                const std::list<std::pair<T, int> > &it = adjacencyListMap.at(vertex);
-                for (const std::pair<T, int> &pair: it) {
-                    adjacentVertices.insert(pair.first);
+                const std::vector<T > &it = adjacencyListMap.at(vertex);
+                for (T vert : it) {
+                    adjacentVertices.insert(vert);
                 }
             }
             return adjacentVertices;
@@ -44,7 +44,7 @@ private:
     }
 
 protected:
-    std::unordered_map<T, std::list<std::pair<T, int> > > adjacencyListMap;
+    std::unordered_map<T, std::vector<T> > adjacencyListMap;
 
 public:
     AdjacencyListDirectedGraph() = default;
@@ -54,7 +54,7 @@ public:
     void addVertex(T vertex) {
         // if (adjacencyListMap.contains(vertex))
         //     throw std::runtime_error("Vertex is already in the map");
-        adjacencyListMap[vertex] = std::list<std::pair<T, int> >();
+        adjacencyListMap[vertex] = std::vector<T>();
     }
 
     void removeVertex(T vertex) {
@@ -65,9 +65,9 @@ public:
         return adjacencyListMap.find(vertex) != adjacencyListMap.end();
     }
 
-    void addEdge(T vertex1, T vertex2, int distance) {
-        auto &adj_list_1 = adjacencyListMap[vertex1];
-        adj_list_1.push_back({vertex2, distance});
+    void addEdge(T from, T to) {
+        auto &adj_list_1 = adjacencyListMap[from];
+        adj_list_1.push_back(to);
     }
 
     void removeEdge(T vertex1, T vertex2) {
@@ -77,9 +77,11 @@ public:
         });
     }
 
-    bool hasEdge(T vertex1, T vertex2) const {
-        auto it = adjacencyListMap.find(vertex1);
-        return  (it != adjacencyListMap.end()); // If not found, return false
+    bool hasEdge(T from, T to) const {
+        auto it = adjacencyListMap.find(from);
+        if (it == adjacencyListMap.end())return false;
+        const std::vector<T>& accessible = it->second;
+        return std::find(accessible.begin(), accessible.end(), to) != accessible.end();
     }
 
     std::unordered_set<T> connected(T vertex, int graphDistance = 1) const {
@@ -102,25 +104,4 @@ public:
         }
         return vertices;
     }
-
-    //int pixelDistance(T vertex1, T vertex2) const
-    //{
-    //	return -1;
-    //}
-    //const int graphDistance(T vertex1, T vertex2)
-    //{
-    //	return -1;
-    //}
-    ///// <summary>
-    ///// this implements Djikstra's algorithm
-    ///// </summary>
-    ///// <param name="from"></param>
-    ///// <param name="to"></param>
-    ///// <returns></returns>
-    //std::list<T> shortestPath(T from, T to) const
-    //{
-    //	return std::list<T>();
-    //}
 };
-
-extern template class AdjacencyListDirectedGraph<int>;

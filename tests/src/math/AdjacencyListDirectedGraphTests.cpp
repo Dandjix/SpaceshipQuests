@@ -4,11 +4,24 @@
 
 #include <gtest/gtest.h>
 
-#include "../../../src/math/AdjacencyListDirectedGraph.h"
-// #include "../../src/math/AdjacencyListDirectedGraph.h"
+#include "math/AdjacencyListDirectedGraph.h"
 
 TEST(AdjacencyListDirectedGraphTestSuite,GraphSimpleTest) {
 
-    AdjacencyListDirectedGraph<int*> graph = AdjacencyListDirectedGraph<int*>();
+    auto graph = AdjacencyListDirectedGraph<int>();
+
+    graph.addVertex(1);
+    graph.addVertex(2);
+
+    graph.addEdge(1,2);
+
+    ASSERT_TRUE(graph.hasVertex(1));
+    ASSERT_TRUE(graph.hasVertex(2));
+
+    ASSERT_TRUE(graph.hasEdge(1,2));
+    ASSERT_FALSE(graph.hasEdge(2,1));
+
+    ASSERT_FALSE(graph.hasEdge(3,4));
+
 
 }

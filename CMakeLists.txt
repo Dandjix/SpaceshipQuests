@@ -5,7 +5,10 @@ set(CMAKE_CXX_STANDARD 26)
 
 include(FetchContent)
 
+add_subdirectory(src)
+
+
 option(BUILD_TESTS "Build tests")
 if(BUILD_TESTS)
-    add_subdirectory(tests)
+    add_subdirectory(tests/src)
 endif()

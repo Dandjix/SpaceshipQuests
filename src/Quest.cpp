@@ -3,3 +3,5 @@
 //
 
 #include "Quest.h"
+
+Quests::Quest::Quest(std::string quest_name): quest_name(quest_name) {  }

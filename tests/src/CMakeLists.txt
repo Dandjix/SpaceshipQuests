@@ -7,12 +7,8 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-file(GLOB_RECURSE TEST_SOURCES src/*.cpp)
+file(GLOB_RECURSE TEST_SOURCES *.cpp)
 
-#target_link_libraries(
-#        INTERFACE
-#        ${PROJECT_NAME}
-#)
 
 add_executable(QuestsTests ${TEST_SOURCES})
 
@@ -21,4 +17,9 @@ target_link_libraries(
         PRIVATE
         GTest::gtest
         gtest_main
+        ${PROJECT_NAME}
+)
+
+target_include_directories(QuestsTests PRIVATE
+        ${CMAKE_SOURCE_DIR}/src
 )

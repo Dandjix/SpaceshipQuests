@@ -7,5 +7,7 @@
 namespace Quests {
     class Quest {
         std::string quest_name;
+
+        explicit Quest(std::string quest_name);
     };
 }
