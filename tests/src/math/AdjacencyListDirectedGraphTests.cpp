@@ -6,14 +6,13 @@
 
 #include "math/AdjacencyListDirectedGraph.h"
 
-TEST(AdjacencyListDirectedGraphTestSuite,GraphSimpleTest) {
-
+TEST(AdjacencyListDirectedGraphTestSuite, GraphSimpleTest) {
     auto graph = AdjacencyListDirectedGraph<int>();
 
     graph.addVertex(1);
     graph.addVertex(2);
 
-    graph.addEdge(1,2);
+    graph.addEdge(1, 2);
 
     ASSERT_TRUE(graph.hasVertex(1));
     ASSERT_TRUE(graph.hasVertex(2));
@@ -22,6 +21,4 @@ TEST(AdjacencyListDirectedGraphTestSuite,GraphSimpleTest) {
     ASSERT_FALSE(graph.hasEdge(2,1));
 
     ASSERT_FALSE(graph.hasEdge(3,4));
-
-
 }
