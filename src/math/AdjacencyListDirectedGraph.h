@@ -49,19 +49,7 @@ protected:
 public:
     AdjacencyListDirectedGraph() = default;
 
-    ~AdjacencyListDirectedGraph() {
-
-        std::unordered_set<T> unicity_check = {};
-        for (auto [key,_]: adjacencyListMap) {
-            if (unicity_check.contains(key))
-                throw std::runtime_error("multiple same keys");
-            unicity_check.insert(key);
-        }
-
-        for (auto room: adjacencyListMap) {
-            delete room.first;
-        }
-    }
+    ~AdjacencyListDirectedGraph() = default;
 
     void addVertex(T vertex) {
         // if (adjacencyListMap.contains(vertex))
