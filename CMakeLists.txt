@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 26)
 
 include(FetchContent)
 
-option(BUILD_TESTS "Build tests" ON)
+option(BUILD_TESTS "Build tests")
 if(BUILD_TESTS)
     add_subdirectory(tests)
 endif()

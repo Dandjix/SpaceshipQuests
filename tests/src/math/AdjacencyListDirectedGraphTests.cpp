@@ -3,10 +3,12 @@
 //
 
 #include <gtest/gtest.h>
+
+#include "../../../src/math/AdjacencyListDirectedGraph.h"
 // #include "../../src/math/AdjacencyListDirectedGraph.h"
 
 TEST(AdjacencyListDirectedGraphTestSuite,GraphSimpleTest) {
 
-    ASSERT_FALSE(2==2);
+    AdjacencyListDirectedGraph<int*> graph = AdjacencyListDirectedGraph<int*>();
 
 }
