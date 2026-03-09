@@ -21,4 +21,6 @@ TEST(AdjacencyListDirectedGraphTestSuite, GraphSimpleTest) {
     ASSERT_FALSE(graph.hasEdge(2,1));
 
     ASSERT_FALSE(graph.hasEdge(3,4));
+
+    ASSERT_THROW(graph.addEdge(5,6), std::out_of_range);
 }

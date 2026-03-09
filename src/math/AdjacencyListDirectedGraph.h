@@ -25,8 +25,8 @@ private:
                 //{
                 //	continue;
                 //}
-                const std::vector<T > &it = adjacencyListMap.at(vertex);
-                for (T vert : it) {
+                const std::vector<T> &it = adjacencyListMap.at(vertex);
+                for (T vert: it) {
                     adjacentVertices.insert(vert);
                 }
             }
@@ -62,11 +62,11 @@ public:
     }
 
     bool hasVertex(T vertex) const {
-        return adjacencyListMap.find(vertex) != adjacencyListMap.end();
+        return adjacencyListMap.contains(vertex);
     }
 
     void addEdge(T from, T to) {
-        auto &adj_list_1 = adjacencyListMap[from];
+        auto &adj_list_1 = adjacencyListMap.at(from);
         adj_list_1.push_back(to);
     }
 
@@ -78,9 +78,8 @@ public:
     }
 
     bool hasEdge(T from, T to) const {
-        auto it = adjacencyListMap.find(from);
-        if (it == adjacencyListMap.end())return false;
-        const std::vector<T>& accessible = it->second;
+        if (!adjacencyListMap.contains(from)) return false;
+        const std::vector<T> &accessible = adjacencyListMap.at(from);
         return std::find(accessible.begin(), accessible.end(), to) != accessible.end();
     }
 
