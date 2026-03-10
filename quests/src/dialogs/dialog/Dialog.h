@@ -20,7 +20,7 @@ namespace Dialogs {
     class Dialog {
     public:
         Dialog(
-            const Quests::Math::AdjacencyListDirectedGraph<DialogStack*> &dialog,
+            const Quests::Math::AdjacencyListDirectedGraph<DialogStack*,int> &dialog,
             std::function<void(std::vector<const PlayerLine &>)> present_choices_to_player,
             std::function<void(const NPCLine &)> present_npc_line
         )
@@ -30,7 +30,7 @@ namespace Dialogs {
         }
 
     protected:
-        Quests::Math::AdjacencyListDirectedGraph<DialogStack*> dialog;
+        Quests::Math::AdjacencyListDirectedGraph<DialogStack*,int> dialog;
     public:
         std::function<void(std::vector<const PlayerLine &>)> present_choices_to_player;
         std::function<void(const NPCLine &)> present_NPC_line;

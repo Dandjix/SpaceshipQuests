@@ -8,20 +8,35 @@
 
 
 TEST(AdjacencyListDirectedGraphTestSuite, GraphSimpleTest) {
-    auto graph = Quests::Math::AdjacencyListDirectedGraph<int>();
+    auto graph = Quests::Math::AdjacencyListDirectedGraph<int, std::string>();
 
     graph.addVertex(1);
     graph.addVertex(2);
 
-    graph.addEdge(1, 2);
+    //adding edge
+    graph.addEdge(1, 2, "A");
 
     ASSERT_TRUE(graph.hasVertex(1));
     ASSERT_TRUE(graph.hasVertex(2));
 
-    ASSERT_TRUE(graph.hasEdge(1,2));
-    ASSERT_FALSE(graph.hasEdge(2,1));
+    //retrieving value
+    {
+        std::string edge;
+        ASSERT_TRUE(graph.getEdge(1,2,&edge));
+        ASSERT_EQ(edge, "A");
+    }
 
-    ASSERT_FALSE(graph.hasEdge(3,4));
+    //only checking existence
+    ASSERT_TRUE(graph.getEdge(1,2));
 
-    ASSERT_THROW(graph.addEdge(5,6), std::out_of_range);
+    //checking non-existence
+    ASSERT_FALSE(graph.getEdge(2,1));
+    ASSERT_FALSE(graph.getEdge(3,4));
+
+    //throw when creating from inexistent vertex
+    ASSERT_THROW(graph.addEdge(5,6,"B"), std::out_of_range);
+
+    graph.removeEdge(1,2);
+
+    ASSERT_FALSE(graph.getEdge(1,2));
 }
