@@ -15,7 +15,6 @@ target_link_libraries(
         QuestsTests
         PRIVATE
         GTest::gtest
-        gtest_main
         ${PROJECT_NAME}
 )
 
