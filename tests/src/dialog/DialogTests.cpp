@@ -27,6 +27,7 @@ TEST(DialogTestSuite, SimpleDialogFlowTest) {
     };
 
     auto lines_3 = std::vector{//2
+        Dialogs::NPCLine("..."),
         Dialogs::NPCLine("*Dies of cringe*"),
     };
 
@@ -60,8 +61,16 @@ TEST(DialogTestSuite, SimpleDialogFlowTest) {
     ASSERT_EQ(dialog.getCurrentLine().line_key,"What am I saying ? Of course you didn't.");
     ASSERT_EQ(dialog.getStatus(),Dialogs::Dialog::AWAITING_CHOICE);
 
+    ASSERT_THROW(dialog.advance(),Dialogs::AdvanceWhileDead);
     dialog.choose(1);
+
+    ASSERT_EQ(dialog.getCurrentLine().line_key,"...");
+    ASSERT_EQ(dialog.getStatus(),Dialogs::Dialog::ALIVE);
+
+    dialog.advance();
 
     ASSERT_EQ(dialog.getCurrentLine().line_key,"*Dies of cringe*");
     ASSERT_EQ(dialog.getStatus(),Dialogs::Dialog::EXHAUSTED);
+
+    ASSERT_THROW(dialog.advance(),Dialogs::AdvanceWhileDead);
 }

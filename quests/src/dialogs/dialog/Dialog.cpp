@@ -53,7 +53,7 @@ void Dialogs::Dialog::choose(int chosen_index) {
 
     current_stack = vertex;
     current_line_in_stack = 0;
-    presented_options = {};
+    presented_options.clear();
 }
 
 void Dialogs::Dialog::softReset() {
