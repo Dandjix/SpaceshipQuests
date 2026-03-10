@@ -106,18 +106,19 @@ namespace Quests::Math {
             return true;
         }
 
-
-        std::unordered_set<T_Vertex> connected(T_Vertex vertex, int graphDistance = 1) const {
-            if (graphDistance < 1) {
-                throw std::invalid_argument("graphDistance must be at least 1");
-            }
-
-            std::unordered_set<T_Vertex> vertices = {vertex};
-
-            auto result = connected_recursive(vertices, graphDistance);
-            result.erase(vertex);
-            return result;
+        /**
+         * returns a vector of all the pair [T_Vertex to,T_Edge edge] corresponding to the edges from vertex [from].
+         *
+         * This is directional, 1 -> 2 != 2 -> 1
+         *
+         * @param from the vertex whose neighbors we will scan
+         * @return vector of all the pair [T_Vertex to,T_Edge edge] corresponding to the edges from
+         * vertex [from] to vertex [to] using edge [edge].
+         */
+        [[nodiscard]] std::vector<std::pair<T_Vertex, T_Edge> > getEdgesFrom(T_Vertex from) const {
+            return adjacencyListMap.at(from);
         }
+
 
         std::vector<T_Vertex> getVertices() const {
             std::vector<T_Vertex> vertices;
