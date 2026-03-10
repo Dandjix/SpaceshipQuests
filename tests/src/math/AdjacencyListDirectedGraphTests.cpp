@@ -4,7 +4,7 @@
 
 #include <gtest/gtest.h>
 
-#include "math/AdjacencyListDirectedGraph.h"
+#include "quests/math/AdjacencyListDirectedGraph.h"
 
 
 TEST(AdjacencyListDirectedGraphTestSuite, GraphSimpleTest) {

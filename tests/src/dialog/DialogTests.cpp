@@ -4,9 +4,9 @@
 
 #include <gtest/gtest.h>
 
-#include "dialogs/dialog/Dialog.h"
-#include "dialogs/lines/NPCLine.h"
-#include "dialogs/lines/PlayerLine.h"
+#include "quests/dialogs/dialog/Dialog.h"
+#include "quests/dialogs/lines/NPCLine.h"
+#include "quests/dialogs/lines/PlayerLine.h"
 
 // #include "dialogs/dialog/Dialog.h"
 

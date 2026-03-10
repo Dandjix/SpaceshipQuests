@@ -4,9 +4,9 @@
 #include <memory>
 #include <utility>
 
-#include "dialogs/lines/NPCLine.h"
-#include "dialogs/lines/PlayerLine.h"
-#include "math/AdjacencyListDirectedGraph.h"
+#include "quests/dialogs/lines/NPCLine.h"
+#include "quests/dialogs/lines/PlayerLine.h"
+#include "quests/math/AdjacencyListDirectedGraph.h"
 
 //
 // Created by timon on 3/9/26.
