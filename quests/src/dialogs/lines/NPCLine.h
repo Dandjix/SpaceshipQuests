@@ -7,10 +7,9 @@
 
 namespace Dialogs {
     class NPCLine {
-    protected:
+    public:
         std::string line_key;
 
-    public:
         explicit NPCLine(std::string line_key) : line_key(std::move(line_key)) {  }
     };
 }
