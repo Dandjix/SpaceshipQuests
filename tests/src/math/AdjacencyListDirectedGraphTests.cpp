@@ -6,8 +6,9 @@
 
 #include "math/AdjacencyListDirectedGraph.h"
 
+
 TEST(AdjacencyListDirectedGraphTestSuite, GraphSimpleTest) {
-    auto graph = AdjacencyListDirectedGraph<int>();
+    auto graph = Quests::Math::AdjacencyListDirectedGraph<int>();
 
     graph.addVertex(1);
     graph.addVertex(2);

@@ -7,8 +7,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-file(GLOB_RECURSE TEST_SOURCES *.cpp)
-
+file(GLOB_RECURSE TEST_SOURCES src/*.cpp)
 
 add_executable(QuestsTests ${TEST_SOURCES})
 
