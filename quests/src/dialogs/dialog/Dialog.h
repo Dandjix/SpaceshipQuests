@@ -17,10 +17,9 @@ class DialogStack;
 
 
 namespace Dialogs {
-
-    class AdvanceWhileDead : public std::exception{
+    class AdvanceWhileDead : public std::exception {
     public:
-        [[nodiscard]] const char * what() const noexcept override {
+        [[nodiscard]] const char *what() const noexcept override {
             return "The dialog was advanced while awaiting a player choice or exhausted.";
         }
     };
@@ -35,7 +34,7 @@ namespace Dialogs {
 
     class Dialog {
     public:
-        using graph_line_index = unsigned int;
+        using index = unsigned int;
 
         enum Status {
             ALIVE,
@@ -52,10 +51,10 @@ namespace Dialogs {
         std::vector<std::vector<NPCLine> > NPC_lines;
         std::vector<PlayerLine> player_lines;
 
-        Quests::Math::AdjacencyListDirectedGraph<graph_line_index, graph_line_index> topology;
+        Quests::Math::AdjacencyListDirectedGraph<index, index> topology;
 
-        graph_line_index current_stack = 0;
-        graph_line_index current_line_in_stack = 0;
+        index current_stack = 0;
+        index current_line_in_stack = 0;
 
     public:
         std::function<void(std::vector<PlayerLine>)> present_choices_to_player;
@@ -64,12 +63,13 @@ namespace Dialogs {
         Dialog(
             std::vector<std::vector<NPCLine> > NPC_lines,
             std::vector<PlayerLine> player_lines,
-            const Quests::Math::AdjacencyListDirectedGraph<graph_line_index, graph_line_index> &topology
+            const Quests::Math::AdjacencyListDirectedGraph<index, index> &topology,
+            index starting_stack_index = 0
         )
             : NPC_lines(std::move(NPC_lines)),
               player_lines(std::move(player_lines)),
-              topology(topology)
-        {
+              topology(topology),
+              current_stack(starting_stack_index) {
         }
 
         /**

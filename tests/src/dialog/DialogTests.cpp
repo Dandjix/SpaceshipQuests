@@ -30,7 +30,7 @@ TEST(DialogTestSuite, SimpleDialogFlowTest) {
         Dialogs::NPCLine("*Dies of cringe*"),
     };
 
-    auto topology = Quests::Math::AdjacencyListDirectedGraph<Dialogs::Dialog::graph_line_index,Dialogs::Dialog::graph_line_index>();
+    auto topology = Quests::Math::AdjacencyListDirectedGraph<Dialogs::Dialog::index,Dialogs::Dialog::index>();
 
     //refer to the numbers in comments next to the npc and player lines declarations
     topology.addVertex(0);
@@ -40,8 +40,8 @@ TEST(DialogTestSuite, SimpleDialogFlowTest) {
     topology.addEdge(0,2,1);
 
     struct Player {
-        std::vector<Dialogs::Dialog::graph_line_index> npc_lines;
-        std::vector<Dialogs::Dialog::graph_line_index> player_lines;
+        std::vector<Dialogs::Dialog::index> npc_lines;
+        std::vector<Dialogs::Dialog::index> player_lines;
     };
 
     Player player ={};
