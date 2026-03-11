@@ -42,6 +42,19 @@ namespace Dialogs {
             EXHAUSTED
         };
 
+    public :
+        [[nodiscard]] std::vector<std::vector<NPCLine> > getNPCLines() const {
+            return NPC_lines;
+        }
+
+        [[nodiscard]] std::vector<PlayerLine> getPlayerLines() const {
+            return player_lines;
+        }
+
+        [[nodiscard]] Quests::Math::AdjacencyListDirectedGraph<index, index> getTopology() const {
+            return topology;
+        }
+
     protected:
         /**
          * The name is a bit misleading : an option which is hidden from the player is still present in this.
